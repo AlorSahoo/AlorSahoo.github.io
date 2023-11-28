@@ -42,8 +42,8 @@ canvas#canvas {
   height: 100%;
   transform: rotate(0deg) scale(1) translateY(0%);
   --gradient-color-1: rgb(46, 173, 241); 
-  --gradient-color-2: #0c293e; 
-  --gradient-color-3: #2d0364;  
+  --gradient-color-2: rgb(40, 88, 121); 
+  --gradient-color-3: #540364;  
   --gradient-color-4: #0a0717;
   --gradient-speed: 0.000006;
 }
