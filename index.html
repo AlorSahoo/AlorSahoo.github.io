@@ -37,7 +37,7 @@
     <nav>
       <a href="#csmath" onclick='showSection("csmathContent");'>cs/math</a>
       <a href="#writing" onclick='showSection("writingContent");'>writing</a>
-      <a href="#portfolio" onclick='showSection("otherContent");'>other</a> <!-- Update with the correct section ID -->
+      <a href="#portfolio" onclick='showSection("otherContent");'>other</a> 
     </nav>
   </header>
 
@@ -50,11 +50,10 @@
     <div id="writingContent"></div>
 
 
-
 <script>
-function showSection(sectionToShow) {
+  function showSection(sectionToShow) {
     // List of all sections
-    var allSections = ['homeContent', 'csmathContent', 'writingContent'];
+    var allSections = ['homeContent', 'csmathContent', 'writingContent', 'homeContent'];
 
     // Hide all sections
     allSections.forEach(function(section) {
@@ -65,6 +64,8 @@ function showSection(sectionToShow) {
     document.getElementById(sectionToShow).style.display = 'block';
 }
 </script>
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
