@@ -77,13 +77,6 @@
 </script>
 
 <script>
-  window.addEventListener('hashchange', function() {
-      var currentHash = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
-      showSection(currentHash);
-  });
-  </script>
-
-<script>
   document.addEventListener('DOMContentLoaded', function() {
       fetch('home.html')
           .then(response => response.text())
