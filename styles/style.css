@@ -95,6 +95,8 @@ nav a:not(:last-of-type) {
 
 /* ------- General ------- */
 
+
+
 a {
   text-decoration: none;
   color: var(--textcolor);
@@ -392,6 +394,21 @@ article time {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/*--------Big Text on Home Page*/
+
+.text-section {
+  position: absolute; /* This positions the container relative to the nearest positioned ancestor or to the initial containing block, which is usually the body or html element */
+  bottom: 3%; /* This pushes the container up from the bottom; decrease this value to move it lower */
+  width: 100%; /* This ensures the container spans the full width */
+  left: 0; /* Aligns the container to the left side of the screen */
+  text-align: center; /* This centers the text horizontally */
+}
+
+.large-text {
+  font-size: 2em; /* Adjust the size as needed */
+  color: #FFF; /* Adjust the color as needed */
 }
 
 /* ------- Slideshow ------- */
