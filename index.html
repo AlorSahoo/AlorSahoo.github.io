@@ -52,22 +52,18 @@
 
 
   <script>
-    function showSection(sectionToShow) {
-      // List of all sections
-      var allSections = ['homeContent', 'csmathContent', 'writingContent', 'otherContent'];
-  
-      // Hide all sections
-      allSections.forEach(function(section) {
-          document.getElementById(section).style.display = 'none';
-      });
-  
-      // Show the selected section
-      document.getElementById(sectionToShow).style.display = 'block';
-  
-      // Update the browser history
-      history.pushState({ section: sectionToShow }, '', '#' + sectionToShow);
-    }
-  </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('home.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('homeContent').innerHTML = data;
+            });
+    
+        // Determine which section to show based on URL hash
+        var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
+        showSection(initialSection);
+    });
+    </script>
 
 <script>
   window.onpopstate = function(event) {
@@ -79,9 +75,13 @@
     }
   };
 </script>
-    
 
-
+<script>
+  window.addEventListener('hashchange', function() {
+      var currentHash = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
+      showSection(currentHash);
+  });
+  </script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -90,8 +90,6 @@
           .then(data => {
               document.getElementById('homeContent').innerHTML = data;
           });
-  
-      // Determine which section to show based on URL hash
       var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
       showSection(initialSection);
   });
