@@ -50,64 +50,62 @@
 
     <div id="writingContent"></div>
 
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('home.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('homeContent').innerHTML = data;
-            });
-    
-        // Determine which section to show based on URL hash
-        var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
-        showSection(initialSection);
-    });
-    </script>
-
 <script>
-  window.onpopstate = function(event) {
-    if (event.state && event.state.section) {
-        showSection(event.state.section);
-    } else {
-        // Default to showing the home section
-        showSection('homeContent');
-    }
-  };
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('main > div').forEach(div => div.style.display = 'none');
+
+    // Show the selected section
+    document.getElementById(sectionId).style.display = 'block';
+
+    // Update browser history
+    history.pushState({section: sectionId}, '', '#' + sectionId);
+}
 </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      fetch('home.html')
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById('homeContent').innerHTML = data;
-          });
-      var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
-      showSection(initialSection);
-  });
+window.onpopstate = function(event) {
+    var section = location.hash.substring(1) + 'Content';
+    if (document.getElementById(section)) {
+        showSection(section);
+    } else {
+        showSection('homeContent');
+    }
+};
   </script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-      fetch('csmath.html')
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById('csmathContent').innerHTML = data;
-          });
-  });
-  </script>
+    // Load content for each section
+    fetchSections(['home', 'csmath', 'writing']);
+
+    var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
+    showSection(initialSection);
+});
+</script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      fetch('writing.html')
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById('writingContent').innerHTML = data;
-          });
-  });
-  </script>
+window.onpopstate = function(event) {
+    var section = location.hash.substring(1) + 'Content';
+    if (document.getElementById(section)) {
+        showSection(section);
+    } else {
+        showSection('homeContent');
+    }
+};
+</script>
 
+<script>
+  function fetchSections(sections) {
+    sections.forEach(section => {
+        fetch(section + '.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(section + 'Content').innerHTML = data;
+            });
+    });
+}
+</script>
 
 </body>
 
