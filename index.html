@@ -35,9 +35,9 @@
       <a href="#home" onclick='document.getElementById("home").style.display = "block";'>Alor Sahoo</a>
     </h1>
     <nav>
-      <a href="#csmath" onclick='document.getElementById("home").style.display = "none";'>cs/math</a>
-      <a href="#writing" onclick='document.getElementById("home").style.display = "none";'>writing</a>
-      <a href="#portfolio" onclick='document.getElementById("home").style.display = "none";'>other</a>
+      <a href="#csmath" onclick='showSection("csmathContent");'>cs/math</a>
+      <a href="#writing" onclick='showSection("writingContent");'>writing</a>
+      <a href="#portfolio" onclick='showSection("otherContent");'>other</a> <!-- Update with the correct section ID -->
     </nav>
   </header>
 
@@ -51,6 +51,20 @@
 
 
 
+<script>
+function showSection(sectionToShow) {
+    // List of all sections
+    var allSections = ['homeContent', 'csmathContent', 'writingContent'];
+
+    // Hide all sections
+    allSections.forEach(function(section) {
+        document.getElementById(section).style.display = 'none';
+    });
+
+    // Show the selected section
+    document.getElementById(sectionToShow).style.display = 'block';
+}
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
