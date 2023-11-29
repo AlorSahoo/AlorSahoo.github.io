@@ -126,14 +126,8 @@ ol,
 article {
   max-width: 60ch; /* Limit line-length to 60 characters */
   margin-bottom: 0px;
-  border-top: 2px solid white; /* Adjust the thickness as needed */
-  margin-top: 20px; /* Adds spacing above the border */
-  padding-top: 20px; /* Adds spacing below the border */
 }
 
-article:first-of-type {
-  border-top: none; /* Removes the border from the first article */
-}
 
 ul {
   list-style-type: none;
