@@ -77,7 +77,7 @@ window.onpopstate = function(event) {
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Load content for each section
-    fetchSections(['home', 'csmath', 'writing']);
+    fetchSections(['home', 'csmath', 'writing', 'portfolio']);
 
     var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
     showSection(initialSection);
