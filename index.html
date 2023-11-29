@@ -30,6 +30,7 @@
     var gradient = new Gradient()
     gradient.initGradient('#canvas')
   </script>
+
   <header>
     <h1>
       <a href="#home" onclick='showSection("homeContent");'>Alor Sahoo</a>
@@ -50,32 +51,51 @@
     <div id="writingContent"></div>
 
 
+  <script>
+    function showSection(sectionToShow) {
+      // List of all sections
+      var allSections = ['homeContent', 'csmathContent', 'writingContent', 'otherContent'];
+  
+      // Hide all sections
+      allSections.forEach(function(section) {
+          document.getElementById(section).style.display = 'none';
+      });
+  
+      // Show the selected section
+      document.getElementById(sectionToShow).style.display = 'block';
+  
+      // Update the browser history
+      history.pushState({ section: sectionToShow }, '', '#' + sectionToShow);
+    }
+  </script>
+
 <script>
-  function showSection(sectionToShow) {
-    // List of all sections
-    var allSections = ['homeContent', 'csmathContent', 'writingContent', 'homeContent'];
-
-    // Hide all sections
-    allSections.forEach(function(section) {
-        document.getElementById(section).style.display = 'none';
-    });
-
-    // Show the selected section
-    document.getElementById(sectionToShow).style.display = 'block';
-}
+  window.onpopstate = function(event) {
+    if (event.state && event.state.section) {
+        showSection(event.state.section);
+    } else {
+        // Default to showing the home section
+        showSection('homeContent');
+    }
+  };
 </script>
+    
 
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('home.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('homeContent').innerHTML = data;
-        });
-});
-</script>
+  document.addEventListener('DOMContentLoaded', function() {
+      fetch('home.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('homeContent').innerHTML = data;
+          });
+  
+      // Determine which section to show based on URL hash
+      var initialSection = location.hash ? location.hash.substring(1) + 'Content' : 'homeContent';
+      showSection(initialSection);
+  });
+  </script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
