@@ -42,8 +42,8 @@
   </header>
 
   <main>
-    <!--#include file="home.html" -->
-    <!--#echo var="DATE_LOCAL" -->
+
+    <div id="homeContent"></div>
 
     <div class="text-section" style="text-align: center; position: absolute; bottom: 3%; width: 100%; left: 0;">
       <p class="large-text" style="font-size: 2em; color: #FFF;">Your large-ish text here</p>
@@ -88,6 +88,17 @@
         <p>filler</p>
       </article>
     </section>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('home.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('homeContent').innerHTML = data;
+        });
+});
+</script>
 
 
 </body>
