@@ -49,17 +49,7 @@
       <p class="large-text" style="font-size: 2em; color: #FFF;">Your large-ish text here</p>
     </div>
 
-    <section id="csmath">
-      <p>
-        Hi! I'm an MIT undergrad interested in algorithms, ml, and more!
-      </p>
-  
-      <figure>
-        <a href="#home" onclick='document.getElementById("home").style.display = "block";'>
-          <figcaption>more soon.</figcaption>
-        </a>
-      </figure>
-    </section>
+    <div id="csmathContent"></div>
 
     <section id="writing">
       <!-- BLOG -->
@@ -99,6 +89,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      fetch('csmath.html')
+          .then(response => response.text())
+          .then(data => {
+              document.getElementById('csmathContent').innerHTML = data;
+          });
+  });
+  </script>
 
 
 </body>
