@@ -85,17 +85,6 @@ window.onpopstate = function(event) {
 </script>
 
 <script>
-window.onpopstate = function(event) {
-    var section = location.hash.substring(1) + 'Content';
-    if (document.getElementById(section)) {
-        showSection(section);
-    } else {
-        showSection('homeContent');
-    }
-};
-</script>
-
-<script>
   function fetchSections(sections) {
     sections.forEach(section => {
         fetch(section + '.html')
