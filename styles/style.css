@@ -345,7 +345,7 @@ a[href$=".png"]:before {
 /* ------- News ------- */
 
 article + article {
-  margin-top: 1.0em;
+  margin-top: 0.5em;
 }
 
 article h2 {
